@@ -202,7 +202,7 @@ void Model::loadFromFile(std::string_view path, bool standardize) {
 	createBuffers();
 }
 
-void Model::render(int numTriangles) const {
+void Model::render() const {
 	glBindVertexArray(m_VAO);
 
 	glActiveTexture(GL_TEXTURE0);
@@ -216,9 +216,7 @@ void Model::render(int numTriangles) const {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	GLsizei numIndices = (numTriangles < 0) ? m_indices.size() : numTriangles * 3;
-
-	glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, nullptr);
 
 	glBindVertexArray(0);
 }

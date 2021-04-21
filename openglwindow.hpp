@@ -6,6 +6,7 @@
 #include "abcg.hpp"
 #include "model.hpp"
 #include "camera.hpp"
+#include "eventhandler.hpp"
 
 class OpenGLWindow : public abcg::OpenGLWindow {
  protected:
@@ -33,12 +34,11 @@ class OpenGLWindow : public abcg::OpenGLWindow {
   glm::mat4 m_viewMatrix{1.0f};
   glm::mat4 m_projMatrix{1.0f};
 
-  // Shaders
-  GLuint m_program;
+  // Event Handler
+  EventHandler m_eventHandler;
 
-  // Mapping mode
-  // 0: triplanar; 1: cylindrical; 2: spherical; 3: from mesh
-  int m_mappingMode{};
+  // Shader
+  GLuint m_program;
 
   // Light and material properties
   glm::vec4 m_lightDir{-1.0f, -1.0f, -1.0f, 0.0f};

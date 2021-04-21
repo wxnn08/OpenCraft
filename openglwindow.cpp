@@ -5,80 +5,25 @@
 #include "abcg.hpp"
 
 void OpenGLWindow::handleEvent(SDL_Event& ev) {
-	if (ev.type == SDL_KEYDOWN) {
-		if (ev.key.keysym.sym == SDLK_UP || ev.key.keysym.sym == SDLK_w)
-			m_dollySpeed = 1.0f;
-		if (ev.key.keysym.sym == SDLK_DOWN || ev.key.keysym.sym == SDLK_s)
-			m_dollySpeed = -1.0f;
-		if (ev.key.keysym.sym == SDLK_LEFT || ev.key.keysym.sym == SDLK_a)
-			m_panSpeed = -1.0f;
-		if (ev.key.keysym.sym == SDLK_RIGHT || ev.key.keysym.sym == SDLK_d)
-			m_panSpeed = 1.0f;
-		if (ev.key.keysym.sym == SDLK_q) m_truckSpeed = -1.0f;
-		if (ev.key.keysym.sym == SDLK_e) m_truckSpeed = 1.0f;
-	}
-	if (ev.type == SDL_KEYUP) {
-		if ((ev.key.keysym.sym == SDLK_UP || ev.key.keysym.sym == SDLK_w) &&
-				m_dollySpeed > 0)
-			m_dollySpeed = 0.0f;
-		if ((ev.key.keysym.sym == SDLK_DOWN || ev.key.keysym.sym == SDLK_s) &&
-				m_dollySpeed < 0)
-			m_dollySpeed = 0.0f;
-		if ((ev.key.keysym.sym == SDLK_LEFT || ev.key.keysym.sym == SDLK_a) &&
-				m_panSpeed < 0)
-			m_panSpeed = 0.0f;
-		if ((ev.key.keysym.sym == SDLK_RIGHT || ev.key.keysym.sym == SDLK_d) &&
-				m_panSpeed > 0)
-			m_panSpeed = 0.0f;
-		if (ev.key.keysym.sym == SDLK_q && m_truckSpeed < 0) m_truckSpeed = 0.0f;
-		if (ev.key.keysym.sym == SDLK_e && m_truckSpeed > 0) m_truckSpeed = 0.0f;
-	}
-	//glm::ivec2 mousePosition;
-	//SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
-
-	//if (event.type == SDL_MOUSEMOTION) {
-	//	m_trackBallModel.mouseMove(mousePosition);
-	//	m_trackBallLight.mouseMove(mousePosition);
-	//}
-	//if (event.type == SDL_MOUSEBUTTONDOWN) {
-	//	if (event.button.button == SDL_BUTTON_LEFT) {
-	//		m_trackBallModel.mousePress(mousePosition);
-	//	}
-	//	if (event.button.button == SDL_BUTTON_RIGHT) {
-	//		m_trackBallLight.mousePress(mousePosition);
-	//	}
-	//}
-	//if (event.type == SDL_MOUSEBUTTONUP) {
-	//	if (event.button.button == SDL_BUTTON_LEFT) {
-	//		m_trackBallModel.mouseRelease(mousePosition);
-	//	}
-	//	if (event.button.button == SDL_BUTTON_RIGHT) {
-	//		m_trackBallLight.mouseRelease(mousePosition);
-	//	}
-	//}
-	//if (event.type == SDL_MOUSEWHEEL) {
-	//	m_zoom += (event.wheel.y > 0 ? 1.0f : -1.0f) / 5.0f;
-	//	m_zoom = glm::clamp(m_zoom, -1.5f, 1.0f);
-	//}
+	m_eventHandler.handleEvent(ev, m_dollySpeed, m_panSpeed, m_truckSpeed);
 }
 
 void OpenGLWindow::initializeGL() {
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_CULL_FACE);
 
 	auto path{getAssetsPath() + "shaders/" + "texture"};
 	m_program = createProgramFromFile(path + ".vert", path + ".frag");
 
 	// Load default model
 	loadModel(getAssetsPath() + "cube.obj");
-	m_mappingMode = 3;  // "From mesh" option
 }
 
 void OpenGLWindow::loadModel(std::string_view path) {
 	m_model.loadDiffuseTexture(getAssetsPath() + "maps/ground_texture.png");
 	m_model.loadFromFile(path);
 	m_model.setupVAO(m_program);
-
 
 	// Use material properties from the loaded model
 	m_Ka = m_model.getKa();
@@ -110,13 +55,11 @@ void OpenGLWindow::paintGL() {
 	GLint KdLoc{glGetUniformLocation(m_program, "Kd")};
 	GLint KsLoc{glGetUniformLocation(m_program, "Ks")};
 	GLint diffuseTexLoc{glGetUniformLocation(m_program, "diffuseTex")};
-	GLint mappingModeLoc{glGetUniformLocation(m_program, "mappingMode")};
 
 	// Set uniform variables used by every scene object
 	glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.m_viewMatrix[0][0]);
-	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_projMatrix[0][0]);
+	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_camera.m_projMatrix[0][0]);
 	glUniform1i(diffuseTexLoc, 0);
-	glUniform1i(mappingModeLoc, m_mappingMode);
 
 	auto lightDirRotated{m_lightDir};
 	glUniform4fv(lightDirLoc, 1, &lightDirRotated.x);
@@ -136,7 +79,7 @@ void OpenGLWindow::paintGL() {
 	glUniform4fv(KdLoc, 1, &m_Kd.x);
 	glUniform4fv(KsLoc, 1, &m_Ks.x);
 
-	m_model.render(m_model.getNumTriangles());
+	m_model.render();
 
 	glUseProgram(0);
 }
@@ -144,9 +87,7 @@ void OpenGLWindow::paintGL() {
 void OpenGLWindow::paintUI() {
 	abcg::OpenGLWindow::paintUI();
 	glFrontFace(GL_CW);
-	auto aspect{static_cast<float>(m_viewportWidth) /
-		static_cast<float>(m_viewportHeight)};
-	m_projMatrix = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 5.0f);
+	m_camera.computeProjectionMatrix(m_viewportWidth, m_viewportHeight);
 }
 
 void OpenGLWindow::resizeGL(int width, int height) {

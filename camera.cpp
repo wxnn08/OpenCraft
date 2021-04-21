@@ -1,11 +1,12 @@
 #include "camera.hpp"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <fmt/core.h>
 
 void Camera::computeProjectionMatrix(int width, int height) {
 	m_projMatrix = glm::mat4(1.0f);
 	auto aspect{static_cast<float>(width) / static_cast<float>(height)};
-	m_projMatrix = glm::perspective(glm::radians(70.0f), aspect, 0.1f, 5.0f);
+	m_projMatrix = glm::perspective(glm::radians(60.0f), aspect, 1.0f, 50.0f);
 }
 
 void Camera::computeViewMatrix() {
