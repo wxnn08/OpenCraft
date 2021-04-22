@@ -2,6 +2,7 @@
 #define SEA_HPP_
 
 #include "model.hpp"
+#include "watershader.hpp"
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -20,7 +21,7 @@ class Sea {
 		glm::vec4 m_Kd;
 		glm::vec4 m_Ks;
 		float m_shininess{};
-
+		float m_time{0};
 
 	public:
 		Sea(){}
@@ -33,7 +34,8 @@ class Sea {
 			};
 		}
 
-		void loadModel(const std::string &assetsPath, const GLuint &program);
+		void loadModel(const std::string &assetsPath);
+		void render(float);
 };
 
 #endif

@@ -4,8 +4,6 @@
 #include <glm/mat4x4.hpp>
 #include <glm/vec3.hpp>
 
-class OpenGLWindow;
-
 class Camera {
 	public:
 		void computeViewMatrix();
@@ -15,8 +13,9 @@ class Camera {
 		void truck(float speed);
 		void pan(float speed);
 
-	private:
-		friend OpenGLWindow;
+		float m_dollySpeed{0.0f};
+		float m_truckSpeed{0.0f};
+		float m_panSpeed{0.0f};
 
 		glm::vec3 m_eye{glm::vec3(-6.03f, 7.54f, -6.03f)};  // Camera position
 		//glm::vec3 m_eye{glm::vec3(0.0f, 5.0f, 0.000000001f)};  // Camera position

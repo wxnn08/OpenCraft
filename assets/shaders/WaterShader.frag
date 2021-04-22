@@ -49,18 +49,27 @@ vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
 	return ambientColor + diffuseColor + specularColor;
 }
 
-float test(float x) {
+float cartoonizeValue(float x) {
 	float c;
 	if(x < 0.2) {
 		c = 0.0;
-	} else if(x < 0.5) {
+	} else if(x < 0.4){
+		c = 0.3;
+	} else if(x < 0.6){
 		c = 0.5;
-	} else if(x < 0.7) {
+	} else if(x < 0.8){
 		c = 0.7;
 	} else {
-		c = 1.0;
+		c = 0.95;
 	}
 	return c;
+}
+
+vec4 cartoonizeVec4(vec4 v) {
+	v.x = cartoonizeValue(v.x);
+	v.y = cartoonizeValue(v.y);
+	v.z = cartoonizeValue(v.z);
+	return v;
 }
 
 void main() {
@@ -69,10 +78,7 @@ void main() {
 	color = BlinnPhong(fragN, fragL, fragV, texCoord);
 
 	vec4 noiseColor = texture(noiseTex, texCoord + time/30.0);
-	noiseColor.x = test(noiseColor.x);
-	noiseColor.y = test(noiseColor.y);
-	noiseColor.z = test(noiseColor.z);
-
+	noiseColor = cartoonizeVec4(noiseColor);
 	color = color + noiseColor;
 
 	if (gl_FrontFacing) {

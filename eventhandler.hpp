@@ -2,10 +2,11 @@
 #define EVENT_HANDLER_HPP_
 
 #include "abcg.hpp"
+#include "camera.hpp"
 
 class EventHandler {
 	public:
-		void handleEvent(SDL_Event& ev, float &dollySpeed, float &panSpeed, float &truckSpeed);
+		void handleEvent(SDL_Event& ev, Camera *camera);
 };
 
 #endif
