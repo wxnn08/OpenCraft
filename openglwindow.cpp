@@ -3,6 +3,7 @@
 #include <cppitertools/itertools.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 #include "abcg.hpp"
+#include <fmt/core.h>
 
 void OpenGLWindow::handleEvent(SDL_Event& ev) {
 	m_eventHandler.handleEvent(ev, m_dollySpeed, m_panSpeed, m_truckSpeed);
@@ -11,25 +12,14 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 void OpenGLWindow::initializeGL() {
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 
 	auto path{getAssetsPath() + "shaders/" + "texture"};
 	m_program = createProgramFromFile(path + ".vert", path + ".frag");
 
-	// Load default model
-	loadModel(getAssetsPath() + "cube.obj");
-}
-
-void OpenGLWindow::loadModel(std::string_view path) {
-	m_model.loadDiffuseTexture(getAssetsPath() + "maps/ground_texture.png");
-	m_model.loadFromFile(path);
-	m_model.setupVAO(m_program);
-
-	// Use material properties from the loaded model
-	m_Ka = m_model.getKa();
-	m_Kd = m_model.getKd();
-	m_Ks = m_model.getKs();
-	m_shininess = m_model.getShininess();
+	m_map = new Map();
+	m_map->initialize();
+	m_map->loadModel(getAssetsPath(), m_program);
 }
 
 void OpenGLWindow::paintGL() {
@@ -67,19 +57,21 @@ void OpenGLWindow::paintGL() {
 	glUniform4fv(IdLoc, 1, &m_Id.x);
 	glUniform4fv(IsLoc, 1, &m_Is.x);
 
-	// Set uniform variables of the current object
-	glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &m_modelMatrix[0][0]);
+		for(auto block : m_map->m_blocks) {
+		// Set uniform variables of the current object
+		glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &block->m_modelMatrix[0][0]);
 
-	auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * m_modelMatrix)};
-	glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
-	glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+		auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * block->m_modelMatrix)};
+		glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
+		glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
 
-	glUniform1f(shininessLoc, m_shininess);
-	glUniform4fv(KaLoc, 1, &m_Ka.x);
-	glUniform4fv(KdLoc, 1, &m_Kd.x);
-	glUniform4fv(KsLoc, 1, &m_Ks.x);
+		glUniform1f(shininessLoc, block->m_shininess);
+		glUniform4fv(KaLoc, 1, &block->m_Ka.x);
+		glUniform4fv(KdLoc, 1, &block->m_Kd.x);
+		glUniform4fv(KsLoc, 1, &block->m_Ks.x);
 
-	m_model.render();
+		block->m_model->render();
+	}
 
 	glUseProgram(0);
 }
