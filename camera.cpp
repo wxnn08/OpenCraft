@@ -11,6 +11,7 @@ void Camera::computeProjectionMatrix(int width, int height) {
 
 void Camera::computeViewMatrix() {
 	m_viewMatrix = glm::lookAt(m_eye, m_at, m_up);
+	//fmt::print("{0} , {1} , {2}\n", m_eye.x, m_eye.y, m_eye.z);
 }
 
 void Camera::dolly(float speed) {

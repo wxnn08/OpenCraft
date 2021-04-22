@@ -2,6 +2,7 @@
 #include <imgui.h>
 #include <cppitertools/itertools.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
+#include <glm/vec3.hpp>
 #include "abcg.hpp"
 #include <fmt/core.h>
 
@@ -12,7 +13,7 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 void OpenGLWindow::initializeGL() {
 	glClearColor(0, 0, 0, 1);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
 
 	auto path{getAssetsPath() + "shaders/" + "texture"};
 	m_program = createProgramFromFile(path + ".vert", path + ".frag");
@@ -20,6 +21,11 @@ void OpenGLWindow::initializeGL() {
 	m_map = new Map();
 	m_map->initialize(getAssetsPath());
 	m_map->loadModel(getAssetsPath(), m_program);
+
+	m_sea = new Sea(
+			glm::vec3{0.0f, -0.2f, 0.0f},
+			glm::vec3{50.0f, 1.0f, 50.0f});
+	m_sea->loadModel(getAssetsPath(), m_program);
 }
 
 void OpenGLWindow::paintGL() {
@@ -72,13 +78,26 @@ void OpenGLWindow::paintGL() {
 
 		block->m_model->render();
 	}
+	// Set uniform variables of the current object
+	glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &m_sea->m_modelMatrix[0][0]);
+
+	auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * m_sea->m_modelMatrix)};
+	glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
+	glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+
+	glUniform1f(shininessLoc, m_sea->m_shininess);
+	glUniform4fv(KaLoc, 1, &m_sea->m_Ka.x);
+	glUniform4fv(KdLoc, 1, &m_sea->m_Kd.x);
+	glUniform4fv(KsLoc, 1, &m_sea->m_Ks.x);
+
+	m_sea->m_model->render();
 
 	glUseProgram(0);
 }
 
 void OpenGLWindow::paintUI() {
 	abcg::OpenGLWindow::paintUI();
-	glFrontFace(GL_CW);
+	glFrontFace(GL_CCW);
 	m_camera.computeProjectionMatrix(m_viewportWidth, m_viewportHeight);
 }
 

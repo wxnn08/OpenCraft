@@ -8,6 +8,7 @@
 #include "camera.hpp"
 #include "eventhandler.hpp"
 #include "map.hpp"
+#include "sea.hpp"
 
 class OpenGLWindow : public abcg::OpenGLWindow {
 	protected:
@@ -35,6 +36,8 @@ class OpenGLWindow : public abcg::OpenGLWindow {
 
 		// Map
 		Map* m_map;
+
+		Sea* m_sea;
 
 		// Event Handler
 		EventHandler m_eventHandler;
