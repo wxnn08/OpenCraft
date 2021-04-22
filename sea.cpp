@@ -6,6 +6,7 @@ void Sea::loadModel(const std::string &assetsPath, const GLuint &program) {
 	m_model = new Model();
 
 	m_model->loadDiffuseTexture(assetsPath + "maps/sea_texture.png");
+	m_model->loadNoiseTexture(assetsPath + "maps/noise1.png");
 	m_model->loadFromFile(assetsPath + "plane.obj");
 	m_model->setupVAO(program);
 

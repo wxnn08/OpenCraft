@@ -20,6 +20,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
 		void terminateGL() override;
 
 	private:
+		float m_time{0};
 		int m_viewportWidth{};
 		int m_viewportHeight{};
 

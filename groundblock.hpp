@@ -24,9 +24,12 @@ class GroundBlock {
 	public:
 		GroundBlock(){}
 		GroundBlock(glm::vec3 position) {
-			m_modelMatrix[3][0] = position.x;
-			m_modelMatrix[3][1] = position.y;
-			m_modelMatrix[3][2] = position.z;
+			m_modelMatrix = glm::mat4{
+				{1.0f, 0.0f, 0.0f, 0.0f},
+				{0.0f, 1.0f, 0.0f, 0.0f},
+				{0.0f, 0.0f, 1.0f, 0.0f},
+				{position.x, position.y, position.z, 1.0f},
+			};
 		}
 
 		void loadModel(const std::string &assetsPath, const GLuint &program);

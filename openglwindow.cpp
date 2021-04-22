@@ -18,9 +18,9 @@ void OpenGLWindow::initializeGL() {
 	auto path{getAssetsPath() + "shaders/" + "texture"};
 	m_program = createProgramFromFile(path + ".vert", path + ".frag");
 
-	m_map = new Map();
-	m_map->initialize(getAssetsPath());
-	m_map->loadModel(getAssetsPath(), m_program);
+	//m_map = new Map();
+	//m_map->initialize(getAssetsPath());
+	//m_map->loadModel(getAssetsPath(), m_program);
 
 	m_sea = new Sea(
 			glm::vec3{0.0f, -0.2f, 0.0f},
@@ -51,11 +51,15 @@ void OpenGLWindow::paintGL() {
 	GLint KdLoc{glGetUniformLocation(m_program, "Kd")};
 	GLint KsLoc{glGetUniformLocation(m_program, "Ks")};
 	GLint diffuseTexLoc{glGetUniformLocation(m_program, "diffuseTex")};
+	GLint noiseTexLoc{glGetUniformLocation(m_program, "noiseTex")};
+
+	GLint timeLoc{glGetUniformLocation(m_program, "time")};
 
 	// Set uniform variables used by every scene object
 	glUniformMatrix4fv(viewMatrixLoc, 1, GL_FALSE, &m_camera.m_viewMatrix[0][0]);
 	glUniformMatrix4fv(projMatrixLoc, 1, GL_FALSE, &m_camera.m_projMatrix[0][0]);
 	glUniform1i(diffuseTexLoc, 0);
+	glUniform1i(noiseTexLoc, 1);
 
 	auto lightDirRotated{m_lightDir};
 	glUniform4fv(lightDirLoc, 1, &lightDirRotated.x);
@@ -63,21 +67,21 @@ void OpenGLWindow::paintGL() {
 	glUniform4fv(IdLoc, 1, &m_Id.x);
 	glUniform4fv(IsLoc, 1, &m_Is.x);
 
-	for(auto block : m_map->m_blocks) {
-		// Set uniform variables of the current object
-		glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &block->m_modelMatrix[0][0]);
+	//for(auto block : m_map->m_blocks) {
+	//	// Set uniform variables of the current object
+	//	glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &block->m_modelMatrix[0][0]);
 
-		auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * block->m_modelMatrix)};
-		glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
-		glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
+	//	auto modelViewMatrix{glm::mat3(m_camera.m_viewMatrix * block->m_modelMatrix)};
+	//	glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
+	//	glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
 
-		glUniform1f(shininessLoc, block->m_shininess);
-		glUniform4fv(KaLoc, 1, &block->m_Ka.x);
-		glUniform4fv(KdLoc, 1, &block->m_Kd.x);
-		glUniform4fv(KsLoc, 1, &block->m_Ks.x);
+	//	glUniform1f(shininessLoc, block->m_shininess);
+	//	glUniform4fv(KaLoc, 1, &block->m_Ka.x);
+	//	glUniform4fv(KdLoc, 1, &block->m_Kd.x);
+	//	glUniform4fv(KsLoc, 1, &block->m_Ks.x);
 
-		block->m_model->render();
-	}
+	//	block->m_model->render();
+	//}
 	// Set uniform variables of the current object
 	glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &m_sea->m_modelMatrix[0][0]);
 
@@ -86,6 +90,7 @@ void OpenGLWindow::paintGL() {
 	glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
 
 	glUniform1f(shininessLoc, m_sea->m_shininess);
+	glUniform1f(timeLoc, m_time);
 	glUniform4fv(KaLoc, 1, &m_sea->m_Ka.x);
 	glUniform4fv(KdLoc, 1, &m_sea->m_Kd.x);
 	glUniform4fv(KsLoc, 1, &m_sea->m_Ks.x);
@@ -112,6 +117,7 @@ void OpenGLWindow::terminateGL() {
 
 void OpenGLWindow::update() {
 	float deltaTime{static_cast<float>(getDeltaTime())};
+	m_time += deltaTime;
 
 	// Update LookAt camera
 	m_camera.dolly(m_dollySpeed * deltaTime);

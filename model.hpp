@@ -29,6 +29,7 @@ class Model {
 		Model& operator=(Model&&) = default;
 
 		void loadDiffuseTexture(std::string_view path);
+		void loadNoiseTexture(std::string_view path);
 		void loadFromFile(std::string_view path, bool standardize = true);
 		void render() const;
 		void setupVAO(GLuint program);
@@ -54,6 +55,7 @@ class Model {
 		glm::vec4 m_Ks;
 		float m_shininess;
 		GLuint m_diffuseTexture{};
+		GLuint m_noiseTexture{};
 
 		std::vector<Vertex> m_vertices;
 		std::vector<GLuint> m_indices;
