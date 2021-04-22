@@ -14,7 +14,7 @@ class Map {
 
 	
 	public:
-		void initialize();
+		void initialize(const std::string &assetsPath);
 		void loadModel(const std::string &assetsPath, const GLuint &program);
 		void createBlock(glm::vec3 position);
 };

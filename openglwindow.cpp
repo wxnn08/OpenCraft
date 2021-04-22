@@ -18,7 +18,7 @@ void OpenGLWindow::initializeGL() {
 	m_program = createProgramFromFile(path + ".vert", path + ".frag");
 
 	m_map = new Map();
-	m_map->initialize();
+	m_map->initialize(getAssetsPath());
 	m_map->loadModel(getAssetsPath(), m_program);
 }
 
@@ -57,7 +57,7 @@ void OpenGLWindow::paintGL() {
 	glUniform4fv(IdLoc, 1, &m_Id.x);
 	glUniform4fv(IsLoc, 1, &m_Is.x);
 
-		for(auto block : m_map->m_blocks) {
+	for(auto block : m_map->m_blocks) {
 		// Set uniform variables of the current object
 		glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &block->m_modelMatrix[0][0]);
 
