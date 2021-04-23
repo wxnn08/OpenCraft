@@ -1,12 +1,11 @@
 #include "camera.hpp"
 
-#include <glm/gtc/matrix_transform.hpp>
 #include <fmt/core.h>
 
 void Camera::computeProjectionMatrix(int width, int height) {
 	m_projMatrix = glm::mat4(1.0f);
 	auto aspect{static_cast<float>(width) / static_cast<float>(height)};
-	m_projMatrix = glm::perspective(glm::radians(60.0f), aspect, 1.0f, 50.0f);
+	m_projMatrix = glm::perspective(m_fov, aspect, m_near, m_far);
 }
 
 void Camera::computeViewMatrix() {
@@ -49,4 +48,15 @@ void Camera::pan(float speed) {
 	m_at = transform * glm::vec4(m_at, 1.0f);
 
 	computeViewMatrix();
+}
+
+glm::vec3 Camera::createRay(float mouseScreenX, float mouseScreenY, float viewPortWidth, float viewPortHeight) {
+    float mouseX = 2.0f * mouseScreenX / viewPortWidth - 1.0f;
+    float mouseY = 1.0f - 2.0f * mouseScreenY / viewPortHeight;
+    glm::vec4 ray_clip = glm::vec4(mouseX, mouseY, -1.0f, 1.0f);
+	glm::vec4 ray_eye = glm::inverse(m_projMatrix) * ray_clip;
+	ray_eye = glm::vec4(ray_eye.x, ray_eye.y, -1.0f, 0.0f);
+	glm::vec4 ray_world = (glm::inverse(m_viewMatrix) * ray_eye);
+	glm::vec3 dir = glm::normalize(glm::vec3(ray_world.x, ray_world.y, ray_world.z));
+    return dir;
 }

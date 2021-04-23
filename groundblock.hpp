@@ -5,6 +5,7 @@
 #include "textureshader.hpp"
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <utility>
 
 class OpenGLWindow;
 
@@ -19,15 +20,23 @@ class GroundBlock {
 		glm::vec4 m_Ks;
 		float m_shininess{};
 
+		float m_virtualRadius{0.6f};
+
 	public:
 		GroundBlock(){}
-		GroundBlock(glm::vec3 position) {
+		GroundBlock(int id, glm::vec3 position) {
+			m_id = id;
+			m_position = position;
 			m_modelMatrix = glm::translate(m_modelMatrix, position);
-			m_modelMatrix = glm::scale(m_modelMatrix, glm::vec3(1.0f, 0.87f, 1.0f));
+			m_modelMatrix = glm::scale(m_modelMatrix, glm::vec3(0.87f, 0.87f, 0.87f));
 		}
 
+		int m_id{};
+		glm::vec3 m_position;
 		void loadModel(const std::string &assetsPath, const GLuint &program);
 		void render();
+		bool rayIntersect(glm::vec3, glm::vec3);
+		std::pair<glm::vec3, glm::vec3> intersectionPoints(glm::vec3, glm::vec3);
 };
 
 #endif

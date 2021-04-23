@@ -3,11 +3,18 @@
 
 #include <glm/mat4x4.hpp>
 #include <glm/vec3.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class Camera {
+	private:
+		float m_fov{glm::radians(60.0f)};
+		float m_near{1.0f};
+		float m_far{50.0f};
+
 	public:
 		void computeViewMatrix();
-		void computeProjectionMatrix(int width, int height);
+		void computeProjectionMatrix(int, int);
+		glm::vec3 createRay(float, float, float, float);
 
 		void dolly(float speed);
 		void truck(float speed);

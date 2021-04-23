@@ -3,10 +3,65 @@
 #include <cppitertools/itertools.hpp>
 #include <glm/vec3.hpp>
 #include <fmt/core.h>
+#include <utility>
 
 
 void OpenGLWindow::handleEvent(SDL_Event& ev) {
 	m_eventHandler.handleEvent(ev, m_camera);
+	if(ev.type == SDL_MOUSEBUTTONDOWN){
+
+		glm::vec3 rayDirection = m_camera->createRay(ev.motion.x, ev.motion.y, m_viewportWidth, m_viewportHeight);
+		glm::vec3 rayOrigin = m_camera->m_eye;
+
+		GroundBlock* clickedBlock = nullptr;
+		glm::vec3 closestPointIntersection{0.0f};
+		float closestPointDistance{0.0f};
+
+		std::pair<glm::vec3, glm::vec3> points;
+		
+		for(auto block : m_map->m_blocks) {
+			if(block->rayIntersect(rayOrigin, rayDirection)) {
+				if(clickedBlock == nullptr) {
+					clickedBlock = block;
+					points = block->intersectionPoints(rayOrigin, rayDirection);
+					float distanceP1 = glm::distance(m_camera->m_eye, points.first);
+					float distanceP2 = glm::distance(m_camera->m_eye, points.second);
+					closestPointIntersection = distanceP1 < distanceP2 ? points.first : points.second;
+					closestPointDistance = std::min(distanceP1, distanceP2);
+				}
+
+				points = block->intersectionPoints(rayOrigin, rayDirection);
+				float distanceP1 = glm::distance(m_camera->m_eye, points.first);
+				float distanceP2 = glm::distance(m_camera->m_eye, points.second);
+
+				if(closestPointDistance > distanceP1){
+					clickedBlock = block;
+					closestPointDistance = distanceP1;
+					closestPointIntersection = points.first;
+				}
+
+				if(closestPointDistance > distanceP2){
+					clickedBlock = block;
+					closestPointDistance = distanceP2;
+					closestPointIntersection = points.second;
+				}
+			}
+		}
+
+		//clickedBlock
+		//closestPointIntersection
+		//losestPointDistance
+
+		if(clickedBlock && ev.button.button == SDL_BUTTON_RIGHT) {
+			m_map->removeBlock(clickedBlock);
+		}
+		if(clickedBlock && ev.button.button == SDL_BUTTON_LEFT) {
+			glm::vec3 pos = glm::round(clickedBlock->m_position + (closestPointIntersection - clickedBlock->m_position) * 1.1f);
+			m_map->createBlock(pos);
+			fmt::print("Created block at: ({0}, {1}, {2})\n", pos.x, pos.y, pos.z);
+		}
+	}
+
 }
 
 void OpenGLWindow::initializeGL() {
@@ -29,9 +84,8 @@ void OpenGLWindow::initializeGL() {
 	program = createProgramFromFile(path + "TextureShader"+ ".vert", path + "TextureShader" + ".frag");
 	TextureShader::setup(program, m_camera, m_light);
 
-	m_map = new Map();
-	m_map->initialize(getAssetsPath());
-	m_map->loadModel(getAssetsPath());
+	m_map = new Map(getAssetsPath());
+	m_map->initialize();
 
 	m_sea = new Sea(
 			glm::vec3{0.0f, -0.2f, 0.0f},
@@ -50,22 +104,6 @@ void OpenGLWindow::paintGL() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(0, 0, m_viewportWidth, m_viewportHeight);
 
-	//for(auto block : m_map->m_blocks) {
-	//	// Set uniform variables of the current object
-	//	glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, &block->m_modelMatrix[0][0]);
-
-	//	auto modelViewMatrix{glm::mat3(m_camera->m_viewMatrix * block->m_modelMatrix)};
-	//	glm::mat3 normalMatrix{glm::inverseTranspose(modelViewMatrix)};
-	//	glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, &normalMatrix[0][0]);
-
-	//	glUniform1f(shininessLoc, block->m_shininess);
-	//	glUniform4fv(KaLoc, 1, &block->m_Ka.x);
-	//	glUniform4fv(KdLoc, 1, &block->m_Kd.x);
-	//	glUniform4fv(KsLoc, 1, &block->m_Ks.x);
-
-	//	block->m_model->render();
-	//}
-	
 	for(auto block : m_map->m_blocks) {
 		block->render();
 	}
