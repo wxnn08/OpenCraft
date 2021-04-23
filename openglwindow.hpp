@@ -11,6 +11,7 @@
 #include "sea.hpp"
 #include "light.hpp"
 #include "watershader.hpp"
+#include "textureshader.hpp"
 
 class OpenGLWindow : public abcg::OpenGLWindow {
 	protected:

@@ -35,7 +35,7 @@ void Map::createBlock(glm::vec3 position) {
 	m_blocks.push_back(block);
 }
 
-void Map::loadModel(const std::string &assetsPath, const GLuint &program) {
+void Map::loadModel(const std::string &assetsPath) {
 	for(auto block : m_blocks)
-		block->loadModel(assetsPath, program);
+		block->loadModel(assetsPath, TextureShader::m_program);
 }

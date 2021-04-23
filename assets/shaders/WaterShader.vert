@@ -9,7 +9,11 @@ uniform mat4 viewMatrix;
 uniform mat4 projMatrix;
 uniform mat3 normalMatrix;
 
+uniform sampler2D noiseTex1;
+uniform sampler2D noiseTex2;
+
 uniform vec4 lightDirWorldSpace;
+uniform float time;
 
 out vec3 fragV;
 out vec3 fragL;
@@ -19,16 +23,22 @@ out vec3 fragPObj;
 out vec3 fragNObj;
 
 void main() {
-  vec3 P = (viewMatrix * modelMatrix * vec4(inPosition, 1.0)).xyz;
-  vec3 N = normalMatrix * inNormal;
-  vec3 L = -(viewMatrix * lightDirWorldSpace).xyz;
 
-  fragL = L;
-  fragV = -P;
-  fragN = N;
-  fragTexCoord = inTexCoord;
-  fragPObj = inPosition;
-  fragNObj = inNormal;
+	vec2 uv = inTexCoord;
+	vec3 newPos = inPosition;
+	float hight1 = texture(noiseTex1, uv + time).x * 0.2;
+    newPos.y += hight1;
 
-  gl_Position = projMatrix * vec4(P, 1.0);
+	vec3 P = (viewMatrix * modelMatrix * vec4(newPos, 1.0)).xyz;
+	vec3 N = normalMatrix * inNormal;
+	vec3 L = -(viewMatrix * lightDirWorldSpace).xyz;
+
+	fragL = L;
+	fragV = -P;
+	fragN = N;
+	fragTexCoord = inTexCoord;
+	fragPObj = newPos;
+	fragNObj = inNormal;
+
+	gl_Position = projMatrix * vec4(P, 1.0);
 }

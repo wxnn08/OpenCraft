@@ -10,7 +10,7 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 }
 
 void OpenGLWindow::initializeGL() {
-	glClearColor(0, 0, 0, 1);
+	glClearColor(1, 1, 1, 1);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
@@ -26,9 +26,12 @@ void OpenGLWindow::initializeGL() {
 	program = createProgramFromFile(path + "WaterShader"+ ".vert", path + "WaterShader" + ".frag");
 	WaterShader::setup(program, m_camera, m_light);
 
-	//m_map = new Map();
-	//m_map->initialize(getAssetsPath());
-	//m_map->loadModel(getAssetsPath(), m_program);
+	program = createProgramFromFile(path + "TextureShader"+ ".vert", path + "TextureShader" + ".frag");
+	TextureShader::setup(program, m_camera, m_light);
+
+	m_map = new Map();
+	m_map->initialize(getAssetsPath());
+	m_map->loadModel(getAssetsPath());
 
 	m_sea = new Sea(
 			glm::vec3{0.0f, -0.2f, 0.0f},
@@ -63,6 +66,9 @@ void OpenGLWindow::paintGL() {
 	//	block->m_model->render();
 	//}
 	
+	for(auto block : m_map->m_blocks) {
+		block->render();
+	}
 	m_sea->render(deltaTime);
 
 	glUseProgram(0);

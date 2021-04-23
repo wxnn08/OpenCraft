@@ -16,4 +16,8 @@ void GroundBlock::loadModel(const std::string &assetsPath, const GLuint &program
 	m_shininess = m_model->getShininess();
 }
 
+void GroundBlock::render() {
+	TextureShader::useProgram(m_modelMatrix, m_shininess, m_Ka, m_Kd, m_Ks);
+	m_model->render();
+}
 

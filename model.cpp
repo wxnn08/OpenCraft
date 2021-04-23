@@ -23,7 +23,8 @@ namespace std {
 
 Model::~Model() {
 	glDeleteTextures(1, &m_diffuseTexture);
-	glDeleteTextures(1, &m_noiseTexture);
+	glDeleteTextures(1, &m_noiseTexture1);
+	glDeleteTextures(1, &m_noiseTexture2);
 	glDeleteBuffers(1, &m_EBO);
 	glDeleteBuffers(1, &m_VBO);
 	glDeleteVertexArrays(1, &m_VAO);
@@ -88,11 +89,18 @@ void Model::loadDiffuseTexture(std::string_view path) {
 	m_diffuseTexture = abcg::opengl::loadTexture(path);
 }
 
-void Model::loadNoiseTexture(std::string_view path) {
+void Model::loadNoiseTexture1(std::string_view path) {
 	if (!std::filesystem::exists(path)) return;
 
-	glDeleteTextures(1, &m_noiseTexture);
-	m_noiseTexture = abcg::opengl::loadTexture(path);
+	glDeleteTextures(1, &m_noiseTexture1);
+	m_noiseTexture1 = abcg::opengl::loadTexture(path);
+}
+
+void Model::loadNoiseTexture2(std::string_view path) {
+	if (!std::filesystem::exists(path)) return;
+
+	glDeleteTextures(1, &m_noiseTexture2);
+	m_noiseTexture2 = abcg::opengl::loadTexture(path);
 }
 
 void Model::loadFromFile(std::string_view path, bool standardize) {
@@ -213,6 +221,7 @@ void Model::loadFromFile(std::string_view path, bool standardize) {
 void Model::render() const {
 	glBindVertexArray(m_VAO);
 
+	//--------------------------------------------------------------
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_diffuseTexture);
 
@@ -224,8 +233,10 @@ void Model::render() const {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
+	//--------------------------------------------------------------
+	
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, m_noiseTexture);
+	glBindTexture(GL_TEXTURE_2D, m_noiseTexture1);
 
 	// Set minification and magnification parameters
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -234,6 +245,20 @@ void Model::render() const {
 	// Set texture wrapping parameters
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	//--------------------------------------------------------------
+	
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, m_noiseTexture2);
+
+	// Set minification and magnification parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	// Set texture wrapping parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//--------------------------------------------------------------
 
 
 	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT, nullptr);

@@ -11,11 +11,10 @@ class Map {
 	private:
 		friend OpenGLWindow;
 		std::vector<GroundBlock*> m_blocks;
-
 	
 	public:
 		void initialize(const std::string &assetsPath);
-		void loadModel(const std::string &assetsPath, const GLuint &program);
+		void loadModel(const std::string &assetsPath);
 		void createBlock(glm::vec3 position);
 };
 

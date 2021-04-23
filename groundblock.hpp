@@ -2,6 +2,7 @@
 #define GROUND_BLOCK_HPP_
 
 #include "model.hpp"
+#include "textureshader.hpp"
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -12,14 +13,11 @@ class GroundBlock {
 		friend OpenGLWindow;
  		Model* m_model;
 
-		glm::vec4 m_position;
-
 		glm::mat4 m_modelMatrix{1.0f};
 		glm::vec4 m_Ka;
 		glm::vec4 m_Kd;
 		glm::vec4 m_Ks;
 		float m_shininess{};
-
 
 	public:
 		GroundBlock(){}
@@ -33,6 +31,7 @@ class GroundBlock {
 		}
 
 		void loadModel(const std::string &assetsPath, const GLuint &program);
+		void render();
 };
 
 #endif

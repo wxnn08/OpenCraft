@@ -18,7 +18,8 @@ uniform float shininess;
 
 // Diffuse texture sampler
 uniform sampler2D diffuseTex;
-uniform sampler2D noiseTex;
+uniform sampler2D noiseTex1;
+uniform sampler2D noiseTex2;
 
 out vec4 outColor;
 
@@ -54,7 +55,7 @@ float cartoonizeValue(float x) {
 	if(x < 0.2) {
 		c = 0.0;
 	} else if(x < 0.4){
-		c = 0.3;
+		c = 0.2;
 	} else if(x < 0.6){
 		c = 0.5;
 	} else if(x < 0.8){
@@ -77,9 +78,15 @@ void main() {
 	vec2 texCoord = fragTexCoord;
 	color = BlinnPhong(fragN, fragL, fragV, texCoord);
 
-	vec4 noiseColor = texture(noiseTex, texCoord + time/30.0);
+	vec4 noiseColor1 = texture(noiseTex1, texCoord + time/2.0);
+	vec4 noiseColor2 = texture(noiseTex1, texCoord - time/5.0);
+
+	vec4 noiseColor = (noiseColor1 + noiseColor2) * 0.5;
+
 	noiseColor = cartoonizeVec4(noiseColor);
+
 	color = color + noiseColor;
+	color[3] = 0.8;
 
 	if (gl_FrontFacing) {
 		outColor = color;
