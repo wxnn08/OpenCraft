@@ -26,12 +26,8 @@ class Sea {
 	public:
 		Sea(){}
 		Sea(glm::vec3 position, glm::vec3 scale) {
-			m_modelMatrix = glm::mat4{
-				{scale.x, 0.0f, 0.0f, 0.0f},
-				{0.0f, scale.y, 0.0f, 0.0f},
-				{0.0f, 0.0f, scale.z, 0.0f},
-				{position.x, position.y, position.z, 1.0f},
-			};
+			m_modelMatrix = glm::translate(m_modelMatrix, position);
+			m_modelMatrix = glm::scale(m_modelMatrix, scale);
 		}
 
 		void loadModel(const std::string &assetsPath);

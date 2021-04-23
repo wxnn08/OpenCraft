@@ -20,7 +20,7 @@ void Map::initialize(const std::string &assetsPath) {
 			getline(file, line);
 			for(int col = 0; col < width; col++) {
 				float xPos = (float)(-width/2) + col;
-				float zPos = (float)(height/2) - row;
+				float zPos = (float)(-height/2) + row;
 				if(line[col] == '1')
 					createBlock(glm::vec3{xPos, 0.0f, zPos});
 			}
