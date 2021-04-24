@@ -13,40 +13,44 @@ void Camera::computeViewMatrix() {
 	//fmt::print("{0} , {1} , {2}\n", m_eye.x, m_eye.y, m_eye.z);
 }
 
-void Camera::dolly(float speed) {
+void Camera::dolly(float dt) {
 	// Compute forward vector (view direction)
 	glm::vec3 forward = glm::normalize(m_at - m_eye);
 
-	// Move eye and center forward (speed > 0) or backward (speed < 0)
-	m_eye += forward * speed;
-	m_at += forward * speed;
+	m_eye += forward * m_dollySpeed * dt;
+	m_at += forward * m_dollySpeed * dt;
 
 	computeViewMatrix();
 }
 
-void Camera::truck(float speed) {
+void Camera::truck(float dt) {
 	// Compute forward vector (view direction)
 	glm::vec3 forward = glm::normalize(m_at - m_eye);
 	// Compute vector to the left
 	glm::vec3 left = glm::cross(m_up, forward);
 
-	// Move eye and center to the left (speed < 0) or to the right (speed > 0)
-	m_at -= left * speed;
-	m_eye -= left * speed;
+	m_at -= left * m_truckSpeed * dt;
+	m_eye -= left * m_truckSpeed * dt;
 
 	computeViewMatrix();
 }
 
-void Camera::pan(float speed) {
+void Camera::pan(float dt) {
 	glm::mat4 transform{glm::mat4(1.0f)};
 
 	// Rotate camera around its local y axis
 	transform = glm::translate(transform, m_eye);
-	transform = glm::rotate(transform, -speed, m_up);
+	transform = glm::rotate(transform, -m_panSpeed * dt, m_up);
 	transform = glm::translate(transform, -m_eye);
 
 	m_at = transform * glm::vec4(m_at, 1.0f);
 
+	computeViewMatrix();
+}
+
+void Camera::vertical(float dt) {
+	m_eye.y += m_verticalSpeed * dt;
+	m_at.y += m_verticalSpeed * dt;
 	computeViewMatrix();
 }
 

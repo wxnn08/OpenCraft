@@ -11,9 +11,13 @@ void EventHandler::handleEvent(SDL_Event& ev, Camera *camera) {
 		if (ev.key.keysym.sym == SDLK_RIGHT || ev.key.keysym.sym == SDLK_d)
 			camera->m_panSpeed = 2.0f;
 		if (ev.key.keysym.sym == SDLK_q) 
-			camera->m_truckSpeed = -5.0f;
+			camera->m_truckSpeed = -8.0f;
 		if (ev.key.keysym.sym == SDLK_e) 
-			camera->m_truckSpeed = 5.0f;
+			camera->m_truckSpeed = 8.0f;
+		if (ev.key.keysym.sym == SDLK_SPACE) 
+			camera->m_verticalSpeed = 8.0f;
+		if (ev.key.keysym.sym == SDLK_LCTRL) 
+			camera->m_verticalSpeed = -8.0f;
 	}
 	if (ev.type == SDL_KEYUP) {
 		if ((ev.key.keysym.sym == SDLK_UP || ev.key.keysym.sym == SDLK_w) && camera->m_dollySpeed > 0)
@@ -28,5 +32,9 @@ void EventHandler::handleEvent(SDL_Event& ev, Camera *camera) {
 			camera->m_truckSpeed = 0.0f;
 		if (ev.key.keysym.sym == SDLK_e && camera->m_truckSpeed > 0) 
 			camera->m_truckSpeed = 0.0f;
+		if (ev.key.keysym.sym == SDLK_SPACE && camera->m_verticalSpeed > 0) 
+			camera->m_verticalSpeed = 0.0f;
+		if (ev.key.keysym.sym == SDLK_LCTRL && camera->m_verticalSpeed < 0) 
+			camera->m_verticalSpeed = 0.0f;
 	}
 }

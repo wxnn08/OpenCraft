@@ -83,9 +83,12 @@ void SeaMap::removeBlock(Block* delBlock) {
 }
 
 void SeaMap::render(float dt) {
-	m_sea->render(dt);
+
 	for(auto block : m_oppaqueBlocks) 
 		block->render();
+
+	m_sea->render(dt);
+
 	for(auto block : m_transparentBlocks) 
 		block->render();
 }

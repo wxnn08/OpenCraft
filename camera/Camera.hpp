@@ -16,13 +16,15 @@ class Camera {
 		void computeProjectionMatrix(int, int);
 		glm::vec3 createRay(float, float, float, float);
 
-		void dolly(float speed);
-		void truck(float speed);
-		void pan(float speed);
+		void dolly(float dt);
+		void truck(float dt);
+		void pan(float dt);
+		void vertical(float dt);
 
 		float m_dollySpeed{0.0f};
 		float m_truckSpeed{0.0f};
 		float m_panSpeed{0.0f};
+		float m_verticalSpeed{0.0f};
 
 		glm::vec3 m_eye{glm::vec3(-8.0f, 9.54f, 8.0f)};  // Camera position
 		//glm::vec3 m_eye{glm::vec3(-2.0f, 2.0f, 2.0f)};  // Camera position

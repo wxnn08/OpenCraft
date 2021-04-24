@@ -50,9 +50,10 @@ void OpenGLWindow::initializeGL() {
 void OpenGLWindow::paintGL() {
 	float deltaTime{static_cast<float>(getDeltaTime())};
 
-	m_camera->dolly(m_camera->m_dollySpeed * deltaTime);
-	m_camera->truck(m_camera->m_truckSpeed * deltaTime);
-	m_camera->pan(m_camera->m_panSpeed * deltaTime);
+	m_camera->dolly(deltaTime);
+	m_camera->truck(deltaTime);
+	m_camera->pan(deltaTime);
+	m_camera->vertical(deltaTime);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(0, 0, m_viewportWidth, m_viewportHeight);
