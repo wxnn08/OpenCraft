@@ -1,2 +1,2 @@
-add_subdirectory(cube-craft)
+add_subdirectory(open-craft)
 
