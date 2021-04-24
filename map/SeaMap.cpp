@@ -3,10 +3,7 @@
 #include <glm/vec3.hpp>
 #include <fmt/core.h>
 
-void Map::initialize() {
-	//createBlock(glm::vec3{0.0f, 0.0f, 0.0f});
-	//createBlock(glm::vec3{1.0f, 0.0f, 0.0f});
-
+void SeaMap::initialize() {
 	std::string line;
 	std::ifstream file(m_assetsPath + "MapDescription.txt");
 
@@ -30,14 +27,14 @@ void Map::initialize() {
 	file.close();
 }
 
-void Map::createBlock(glm::vec3 position) {
-	auto block = new GrassBlock(m_currId, position);
+void SeaMap::createBlock(glm::vec3 position) {
+	auto* block = new GrassBlock(m_currId, position);
 	block->loadModel(m_assetsPath, TextureRender::m_program);
 	m_currId++;
 	m_blocks.push_back(block);
 }
 
-void Map::removeBlock(GrassBlock* delBlock) {
+void SeaMap::removeBlock(Block* delBlock) {
 	int index;
 	for(index = 0; index < (int)m_blocks.size(); index++) 
 		if(m_blocks[index]->m_id == delBlock->m_id) break;

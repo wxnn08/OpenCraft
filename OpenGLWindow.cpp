@@ -14,7 +14,7 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 		glm::vec3 rayDirection = m_camera->createRay(ev.motion.x, ev.motion.y, m_viewportWidth, m_viewportHeight);
 		glm::vec3 rayOrigin = m_camera->m_eye;
 
-		GrassBlock* clickedBlock = nullptr;
+		Block* clickedBlock = nullptr;
 		glm::vec3 closestPointIntersection{0.0f};
 		float closestPointDistance{0.0f};
 
@@ -81,7 +81,7 @@ void OpenGLWindow::initializeGL() {
 	program = createProgramFromFile(path + "TextureShader"+ ".vert", path + "TextureShader" + ".frag");
 	TextureRender::setup(program, m_camera, m_light);
 
-	m_map = new Map(getAssetsPath());
+	m_map = new SeaMap(getAssetsPath());
 	m_map->initialize();
 
 	m_sea = new Sea(

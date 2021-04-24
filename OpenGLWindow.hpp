@@ -32,7 +32,7 @@ class OpenGLWindow : public abcg::OpenGLWindow {
 
 		Camera* m_camera;
 		Light* m_light;
-		Map* m_map;
+		SeaMap* m_map;
 		Sea* m_sea;
 		EventHandler m_eventHandler;
 
