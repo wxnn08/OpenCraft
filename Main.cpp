@@ -1,7 +1,7 @@
 #include <fmt/core.h>
 
 #include "abcg.hpp"
-#include "openglwindow.hpp"
+#include "OpenGLWindow.hpp"
 
 int main(int argc, char **argv) {
   try {

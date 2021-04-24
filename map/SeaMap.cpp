@@ -1,4 +1,4 @@
-#include "map.hpp"
+#include "SeaMap.hpp"
 #include <fstream>
 #include <glm/vec3.hpp>
 #include <fmt/core.h>
@@ -31,13 +31,13 @@ void Map::initialize() {
 }
 
 void Map::createBlock(glm::vec3 position) {
-	auto block = new GroundBlock(m_currId, position);
-	block->loadModel(m_assetsPath, TextureShader::m_program);
+	auto block = new GrassBlock(m_currId, position);
+	block->loadModel(m_assetsPath, TextureRender::m_program);
 	m_currId++;
 	m_blocks.push_back(block);
 }
 
-void Map::removeBlock(GroundBlock* delBlock) {
+void Map::removeBlock(GrassBlock* delBlock) {
 	int index;
 	for(index = 0; index < (int)m_blocks.size(); index++) 
 		if(m_blocks[index]->m_id == delBlock->m_id) break;

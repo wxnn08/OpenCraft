@@ -2,14 +2,14 @@
 #define WATER_SHADER_HPP_
 
 #include "abcg.hpp"
-#include "camera.hpp"
-#include "light.hpp"
+#include "../camera/Camera.hpp"
+#include "../light/Light.hpp"
 
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 
-class WaterShader {
+class FluidRender {
 	public:
 		static GLint m_program;
 		static Camera* m_camera;

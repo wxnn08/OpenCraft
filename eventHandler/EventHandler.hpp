@@ -2,7 +2,7 @@
 #define EVENT_HANDLER_HPP_
 
 #include "abcg.hpp"
-#include "camera.hpp"
+#include "../camera/Camera.hpp"
 
 class EventHandler {
 	public:

@@ -1,16 +1,16 @@
-#include "textureshader.hpp"
+#include "TextureRender.hpp"
 
-GLint TextureShader::m_program;
-Light* TextureShader::m_light;
-Camera* TextureShader::m_camera;
+GLint TextureRender::m_program;
+Light* TextureRender::m_light;
+Camera* TextureRender::m_camera;
 
-void TextureShader::setup(GLint program, Camera* camera, Light* light) {
+void TextureRender::setup(GLint program, Camera* camera, Light* light) {
 	m_program = program;
 	m_camera = camera;
 	m_light = light;
 }
 
-void TextureShader::useProgram(const glm::mat4& modelMatrix, float shininess, const glm::vec4& Ka, const glm::vec4& Kd, const glm::vec4& Ks) {
+void TextureRender::useProgram(const glm::mat4& modelMatrix, float shininess, const glm::vec4& Ka, const glm::vec4& Kd, const glm::vec4& Ks) {
 	// Use currently selected program
 	glUseProgram(m_program);
 

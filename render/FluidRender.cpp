@@ -1,16 +1,16 @@
-#include "watershader.hpp"
+#include "FluidRender.hpp"
 
-GLint WaterShader::m_program;
-Light* WaterShader::m_light;
-Camera* WaterShader::m_camera;
+GLint FluidRender::m_program;
+Light* FluidRender::m_light;
+Camera* FluidRender::m_camera;
 
-void WaterShader::setup(GLint program, Camera* camera, Light* light) {
+void FluidRender::setup(GLint program, Camera* camera, Light* light) {
 	m_program = program;
 	m_camera = camera;
 	m_light = light;
 }
 
-void WaterShader::useProgram(const glm::mat4& modelMatrix, float time, float shininess, const glm::vec4& Ka, const glm::vec4& Kd, const glm::vec4& Ks) {
+void FluidRender::useProgram(const glm::mat4& modelMatrix, float time, float shininess, const glm::vec4& Ka, const glm::vec4& Kd, const glm::vec4& Ks) {
 	// Use currently selected program
 	glUseProgram(m_program);
 

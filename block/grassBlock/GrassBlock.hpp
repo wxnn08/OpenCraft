@@ -1,15 +1,16 @@
-#ifndef GROUND_BLOCK_HPP_
-#define GROUND_BLOCK_HPP_
+#ifndef GRASS_BLOCK_HPP_
+#define GRASS_BLOCK_HPP_
 
-#include "model.hpp"
-#include "textureshader.hpp"
+#include "abcg.hpp"
+#include "../../model/Model.hpp"
+#include "../../render/TextureRender.hpp"
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <utility>
 
 class OpenGLWindow;
 
-class GroundBlock {
+class GrassBlock {
 	protected:
 		friend OpenGLWindow;
  		Model* m_model;
@@ -20,11 +21,11 @@ class GroundBlock {
 		glm::vec4 m_Ks;
 		float m_shininess{};
 
-		float m_virtualRadius{0.6f};
+		float m_virtualRadius{0.8f};
 
 	public:
-		GroundBlock(){}
-		GroundBlock(int id, glm::vec3 position) {
+		GrassBlock(){}
+		GrassBlock(int id, glm::vec3 position) {
 			m_id = id;
 			m_position = position;
 			m_modelMatrix = glm::translate(m_modelMatrix, position);

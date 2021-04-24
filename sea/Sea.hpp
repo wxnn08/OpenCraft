@@ -1,8 +1,8 @@
 #ifndef SEA_HPP_
 #define SEA_HPP_
 
-#include "model.hpp"
-#include "watershader.hpp"
+#include "../model/Model.hpp"
+#include "../render/FluidRender.hpp"
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>

@@ -1,15 +1,15 @@
-#ifndef TEXTURE_SHADER_HPP_
-#define TEXTURE_SHADER_HPP_
+#ifndef TEXTURE_RENDER_HPP_
+#define TEXTURE_RENDER_HPP_
 
 #include "abcg.hpp"
-#include "camera.hpp"
-#include "light.hpp"
+#include "../camera/Camera.hpp"
+#include "../light/Light.hpp"
 
 #include <glm/vec4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 
-class TextureShader {
+class TextureRender {
 	public:
 		static GLint m_program;
 		static Camera* m_camera;

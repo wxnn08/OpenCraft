@@ -4,14 +4,14 @@
 #include <string_view>
 
 #include "abcg.hpp"
-#include "model.hpp"
-#include "camera.hpp"
-#include "eventhandler.hpp"
-#include "map.hpp"
-#include "sea.hpp"
-#include "light.hpp"
-#include "watershader.hpp"
-#include "textureshader.hpp"
+#include "model/Model.hpp"
+#include "camera/Camera.hpp"
+#include "eventHandler/EventHandler.hpp"
+#include "map/SeaMap.hpp"
+#include "sea/Sea.hpp"
+#include "light/Light.hpp"
+#include "render/FluidRender.hpp"
+#include "render/TextureRender.hpp"
 
 class OpenGLWindow : public abcg::OpenGLWindow {
 	protected:

@@ -1,4 +1,4 @@
 cmake_minimum_required(VERSION 3.11)
 project(3d-world)
-add_executable(${PROJECT_NAME} main.cpp openglwindow.cpp model.cpp camera.cpp eventhandler.cpp map.cpp groundblock.cpp sea.cpp textureshader.cpp watershader.cpp)
+add_executable(${PROJECT_NAME} Main.cpp OpenGLWindow.cpp model/Model.cpp camera/Camera.cpp eventHandler/EventHandler.cpp map/SeaMap.cpp block/grassBlock/GrassBlock.cpp sea/Sea.cpp render/TextureRender.cpp render/FluidRender.cpp)
 enable_abcg(${PROJECT_NAME})

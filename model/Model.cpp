@@ -1,4 +1,4 @@
-#include "model.hpp"
+#include "Model.hpp"
 
 #include <fmt/core.h>
 #include <tiny_obj_loader.h>

@@ -1,4 +1,4 @@
-#include "eventhandler.hpp"
+#include "EventHandler.hpp"
 
 void EventHandler::handleEvent(SDL_Event& ev, Camera *camera) {
 	if (ev.type == SDL_KEYDOWN) {

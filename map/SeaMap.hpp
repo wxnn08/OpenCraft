@@ -1,7 +1,7 @@
-#ifndef MAP_HPP_
-#define MAP_HPP_
+#ifndef SEAMAP_HPP_
+#define SEAMAP_HPP_
 
-#include "groundblock.hpp"
+#include "../block/grassBlock/GrassBlock.hpp"
 #include "abcg.hpp"
 #include <vector>
 
@@ -11,7 +11,7 @@ class Map {
 	private:
 		int m_currId{0};
 		friend OpenGLWindow;
-		std::vector<GroundBlock*> m_blocks;
+		std::vector<GrassBlock*> m_blocks;
 		std::string m_assetsPath;
 	
 	public:
@@ -20,7 +20,7 @@ class Map {
 		}
 		void initialize();
 		void createBlock(glm::vec3 position);
-		void removeBlock(GroundBlock*);
+		void removeBlock(GrassBlock*);
 };
 
 #endif

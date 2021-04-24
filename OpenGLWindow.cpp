@@ -1,4 +1,4 @@
-#include "openglwindow.hpp"
+#include "OpenGLWindow.hpp"
 #include <imgui.h>
 #include <cppitertools/itertools.hpp>
 #include <glm/vec3.hpp>
@@ -8,12 +8,13 @@
 
 void OpenGLWindow::handleEvent(SDL_Event& ev) {
 	m_eventHandler.handleEvent(ev, m_camera);
+
 	if(ev.type == SDL_MOUSEBUTTONDOWN){
 
 		glm::vec3 rayDirection = m_camera->createRay(ev.motion.x, ev.motion.y, m_viewportWidth, m_viewportHeight);
 		glm::vec3 rayOrigin = m_camera->m_eye;
 
-		GroundBlock* clickedBlock = nullptr;
+		GrassBlock* clickedBlock = nullptr;
 		glm::vec3 closestPointIntersection{0.0f};
 		float closestPointDistance{0.0f};
 
@@ -48,10 +49,6 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 			}
 		}
 
-		//clickedBlock
-		//closestPointIntersection
-		//losestPointDistance
-
 		if(clickedBlock && ev.button.button == SDL_BUTTON_RIGHT) {
 			m_map->removeBlock(clickedBlock);
 		}
@@ -79,10 +76,10 @@ void OpenGLWindow::initializeGL() {
 	GLuint program{};
 
 	program = createProgramFromFile(path + "WaterShader"+ ".vert", path + "WaterShader" + ".frag");
-	WaterShader::setup(program, m_camera, m_light);
+	FluidRender::setup(program, m_camera, m_light);
 
 	program = createProgramFromFile(path + "TextureShader"+ ".vert", path + "TextureShader" + ".frag");
-	TextureShader::setup(program, m_camera, m_light);
+	TextureRender::setup(program, m_camera, m_light);
 
 	m_map = new Map(getAssetsPath());
 	m_map->initialize();

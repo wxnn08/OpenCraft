@@ -1,4 +1,4 @@
-#include "camera.hpp"
+#include "Camera.hpp"
 
 #include <fmt/core.h>
 

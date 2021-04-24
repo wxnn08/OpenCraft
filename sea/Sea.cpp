@@ -1,4 +1,4 @@
-#include "sea.hpp"
+#include "Sea.hpp"
 #include "abcg.hpp"
 #include <fmt/core.h>
 
@@ -9,7 +9,7 @@ void Sea::loadModel(const std::string &assetsPath) {
 	m_model->loadNoiseTexture1(assetsPath + "maps/noise2.png");
 	m_model->loadNoiseTexture2(assetsPath + "maps/noise3.png");
 	m_model->loadFromFile(assetsPath + "plane.obj");
-	m_model->setupVAO(WaterShader::m_program);
+	m_model->setupVAO(FluidRender::m_program);
 
 	// Use material properties from the loaded model
 	m_Ka = m_model->getKa();
@@ -20,7 +20,7 @@ void Sea::loadModel(const std::string &assetsPath) {
 
 void Sea::render(float dt = 0.0f) {
 	m_time += dt;
-	WaterShader::useProgram(m_modelMatrix, m_time/50.0f, m_shininess, m_Ka, m_Kd, m_Ks);
+	FluidRender::useProgram(m_modelMatrix, m_time/50.0f, m_shininess, m_Ka, m_Kd, m_Ks);
 	m_model->render();
 }
 
