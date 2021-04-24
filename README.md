@@ -1,10 +1,14 @@
 <h1 align="center">OpenCraft</h1>
 
-<img align="right" src="https://img.shields.io/github/last-commit/wxnn08/OpenCraft?style=flat">
+<p align="center">
+  
+<img src="https://img.shields.io/github/last-commit/wxnn08/OpenCraft?style=flat">
 
-<img align="right" src="https://img.shields.io/website?style=flat">
+<img src="https://img.shields.io/website?style=flat">
 
-<img src="https://media.giphy.com/media/yfK8NTde9hdKsgqSL1/giphy.gif" width="70%">
+</p>
+
+<img align="right" src="https://media.giphy.com/media/yfK8NTde9hdKsgqSL1/giphy.gif" width="70%">
 
 ## ABCg
 
