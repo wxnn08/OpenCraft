@@ -12,6 +12,7 @@
 <p align="center">
     <img align="center" src="https://media.giphy.com/media/yfK8NTde9hdKsgqSL1/giphy.gif" width="90%">
 </p>
+
 ## About
 
 <p align="center"><b>Author: Wesley Pereira da Silva</b></p>
