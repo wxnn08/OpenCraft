@@ -6,7 +6,7 @@
 void UI::initializeGL(std::string assetsPath) {
 	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/grass.png", &m_grassTexture);
 	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/stone.png", &m_stoneTexture);
-	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/grass.png", &m_woodTexture);
+	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/wood.png", &m_woodTexture);
 }
 
 void UI::paintUI(int width, int height) {
