@@ -9,7 +9,7 @@ class Camera {
 	private:
 		float m_fov{glm::radians(60.0f)};
 		float m_near{1.0f};
-		float m_far{50.0f};
+		float m_far{300.0f};
 
 	public:
 		void computeViewMatrix();

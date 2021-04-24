@@ -1,12 +1,12 @@
-#ifndef GRASS_BLOCK_HPP_
-#define GRASS_BLOCK_HPP_
+#ifndef STONE_BLOCK_HPP_
+#define STONE_BLOCK_HPP_
 
 #include "../Block.hpp"
 #include "../../render/TextureRender.hpp"
 
-class GrassBlock : public Block {
+class StoneBlock : public Block {
 	public:
-		GrassBlock(int id, glm::vec3 p) : Block(id, p){}
+		StoneBlock(int id, glm::vec3 p) : Block(id, p){}
 		void loadModel(const std::string&);
 		void render();
 };

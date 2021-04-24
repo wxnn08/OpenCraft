@@ -7,8 +7,8 @@
 #include "model/Model.hpp"
 #include "camera/Camera.hpp"
 #include "eventHandler/EventHandler.hpp"
+#include "ui/UI.hpp"
 #include "map/SeaMap.hpp"
-#include "sea/Sea.hpp"
 #include "light/Light.hpp"
 #include "render/FluidRender.hpp"
 #include "render/TextureRender.hpp"
@@ -27,13 +27,15 @@ class OpenGLWindow : public abcg::OpenGLWindow {
 		int m_viewportWidth{};
 		int m_viewportHeight{};
 
+		bool m_creationBlockMenuActive;
+
 		glm::mat4 m_viewMatrix{1.0f};
 		glm::mat4 m_projMatrix{1.0f};
 
 		Camera* m_camera;
 		Light* m_light;
+		UI* m_ui;
 		SeaMap* m_map;
-		Sea* m_sea;
 		EventHandler m_eventHandler;
 
 		// Shader

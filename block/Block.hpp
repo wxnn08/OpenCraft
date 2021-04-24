@@ -32,7 +32,7 @@ class Block {
 
 		bool rayIntersect(glm::vec3, glm::vec3);
 		std::pair<glm::vec3, glm::vec3> intersectionPoints(glm::vec3, glm::vec3);
-		virtual void loadModel(const std::string&, const GLuint &) = 0;
+		virtual void loadModel(const std::string&) = 0;
 		virtual void render() = 0;
 };
 

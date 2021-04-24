@@ -1,6 +1,6 @@
 # Blender v2.83.5 OBJ File: ''
 # www.blender.org
-mtllib cube.mtl
+mtllib grass_cube.mtl
 o Cube_Cube.001
 v -0.500000 -0.500000 0.500000
 v -0.500000 0.500000 0.500000

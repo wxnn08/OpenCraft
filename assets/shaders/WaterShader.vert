@@ -13,7 +13,7 @@ uniform sampler2D noiseTex1;
 uniform sampler2D noiseTex2;
 
 uniform vec4 lightDirWorldSpace;
-uniform float time;
+uniform highp float time;
 
 out vec3 fragV;
 out vec3 fragL;

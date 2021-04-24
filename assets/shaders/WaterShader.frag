@@ -7,7 +7,7 @@ in vec2 fragTexCoord;
 in vec3 fragPObj;
 in vec3 fragNObj;
 
-uniform float time;
+uniform highp float time;
 
 // Light properties
 uniform vec4 Ia, Id, Is;
@@ -52,9 +52,9 @@ vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
 
 float cartoonizeValue(float x) {
 	float c;
-	if(x < 0.2) {
+	if(x < 0.4) {
 		c = 0.0;
-	} else if(x < 0.4){
+	} else if(x < 0.5){
 		c = 0.2;
 	} else if(x < 0.6){
 		c = 0.5;
