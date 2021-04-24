@@ -5,7 +5,6 @@
 #include <utility>
 
 void SeaMap::initializeGL() {
-
 	m_sea = new Sea( glm::vec3{0.0f, -0.2f, 0.0f}, glm::vec3{200.0f, 1.0f, 200.0f});
 	m_sea->loadModel(m_assetsPath);
 
@@ -77,8 +76,8 @@ void SeaMap::removeBlock(Block* delBlock) {
 		}
 	for(auto& block : m_transparentBlocks)
 		if(block->m_id == delBlock->m_id) {
-			std::swap(block, m_oppaqueBlocks.back());
-			m_oppaqueBlocks.pop_back();
+			std::swap(block, m_transparentBlocks.back());
+			m_transparentBlocks.pop_back();
 			break;
 		}
 }
