@@ -27,21 +27,31 @@ void SeaMap::createBlock(int type, glm::vec3 position) {
 		case 1:
 			createStoneBlock(position);
 			break;
+		case 2:
+			createWoodBlock(position);
+			break;
 	}
+}
+
+void SeaMap::setupBlock(Block* block) {
+	block->loadModel(m_assetsPath);
+	m_blocks.push_back(block);
+	m_currId++;
 }
 
 void SeaMap::createGrassBlock(glm::vec3 position) {
 	auto block = new GrassBlock(m_currId, position);
-	block->loadModel(m_assetsPath);
-	m_blocks.push_back(block);
-	m_currId++;
+	setupBlock(block);
 }
 
 void SeaMap::createStoneBlock(glm::vec3 position) {
 	auto block = new StoneBlock(m_currId, position);
-	block->loadModel(m_assetsPath);
-	m_blocks.push_back(block);
-	m_currId++;
+	setupBlock(block);
+}
+
+void SeaMap::createWoodBlock(glm::vec3 position) {
+	auto block = new WoodBlock(m_currId, position);
+	setupBlock(block);
 }
 
 void SeaMap::removeBlock(Block* delBlock) {

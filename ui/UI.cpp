@@ -4,8 +4,9 @@
 #include "../utils/stb_image.h"
 
 void UI::initializeGL(std::string assetsPath) {
-	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/grass.png", &grass_texture);
-	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/stone.png", &stone_texture);
+	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/grass.png", &m_grassTexture);
+	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/stone.png", &m_stoneTexture);
+	loadTextureFromFile("./build/bin/3d-world/assets/cubetypes/grass.png", &m_woodTexture);
 }
 
 void UI::paintUI(int width, int height) {
@@ -22,11 +23,14 @@ void UI::paintUI(int width, int height) {
     ImGui::SetNextWindowSize(size);
 	
 	ImGui::Begin("OpenGL Texture Text", nullptr, m_cubeSelectFlags);
-	if(ImGui::ImageButton((void*)(intptr_t)grass_texture, ImVec2(64.0f, 64.0f))) {
+	if(ImGui::ImageButton((void*)(intptr_t)m_grassTexture, ImVec2(64.0f, 64.0f))) {
 		m_cubeSelected = 0;
 	}
-	if(ImGui::ImageButton((void*)(intptr_t)stone_texture, ImVec2(64.0f, 64.0f))) {
+	if(ImGui::ImageButton((void*)(intptr_t)m_stoneTexture, ImVec2(64.0f, 64.0f))) {
 		m_cubeSelected = 1;
+	}
+	if(ImGui::ImageButton((void*)(intptr_t)m_woodTexture, ImVec2(64.0f, 64.0f))) {
+		m_cubeSelected = 2;
 	}
 	ImGui::End();
 }

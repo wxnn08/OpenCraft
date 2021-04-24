@@ -12,9 +12,9 @@ class Block {
  		Model* m_model;
 
 		glm::mat4 m_modelMatrix{1.0f};
-		glm::vec4 m_Ka;
-		glm::vec4 m_Kd;
-		glm::vec4 m_Ks;
+		glm::vec4 m_Ka{1.0f};
+		glm::vec4 m_Kd{1.0f};
+		glm::vec4 m_Ks{1.0f};
 		float m_shininess{};
 
 		float m_virtualRadius{0.8f};
