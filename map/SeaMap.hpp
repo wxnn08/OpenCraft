@@ -23,7 +23,9 @@ class SeaMap {
 			m_assetsPath = assetsPath;
 		}
 		void initializeGL();
-		void createBlock(glm::vec3 position);
+		void createBlock(int, glm::vec3);
+		void createGrassBlock(glm::vec3);
+		void createStoneBlock(glm::vec3);
 		void removeBlock(Block*);
 		void render(float);
 };

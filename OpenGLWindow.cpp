@@ -53,7 +53,7 @@ void OpenGLWindow::handleEvent(SDL_Event& ev) {
 		}
 		if(clickedBlock && ev.button.button == SDL_BUTTON_LEFT) {
 			glm::vec3 pos = glm::round(clickedBlock->m_position + (closestPointIntersection - clickedBlock->m_position) * 1.1f);
-			m_map->createBlock(pos);
+			m_map->createBlock(m_ui->m_cubeSelected, pos);
 		}
 	}
 }
@@ -98,7 +98,7 @@ void OpenGLWindow::paintGL() {
 
 void OpenGLWindow::paintUI() {
 	abcg::OpenGLWindow::paintUI();
-	m_ui->paintUI();
+	m_ui->paintUI(m_viewportWidth, m_viewportHeight);
 }
 
 void OpenGLWindow::resizeGL(int width, int height) {

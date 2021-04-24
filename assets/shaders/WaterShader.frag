@@ -52,16 +52,26 @@ vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
 
 float cartoonizeValue(float x) {
 	float c;
-	if(x < 0.4) {
+	if(x < 0.1) {
 		c = 0.0;
-	} else if(x < 0.5){
+	} else if(x < 0.2){
+		c = 0.1;
+	} else if(x < 0.3){
 		c = 0.2;
+	} else if(x < 0.4){
+		c = 0.3;
+	} else if(x < 0.5){
+		c = 0.4;
 	} else if(x < 0.6){
 		c = 0.5;
 	} else if(x < 0.8){
+		c = 0.6;
+	} else if(x < 0.8){
 		c = 0.7;
+	} else if(x < 0.9){
+		c = 0.8;
 	} else {
-		c = 0.95;
+		c = 0.9;
 	}
 	return c;
 }
