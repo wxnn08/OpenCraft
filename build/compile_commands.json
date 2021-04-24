@@ -1,0 +1,152 @@
+[
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_application.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_application.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_application.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_elapsedtimer.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_elapsedtimer.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_elapsedtimer.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_exception.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_exception.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_exception.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_image.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_image.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_image.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_openglfunctions.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_openglfunctions.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_openglfunctions.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_openglwindow.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_openglwindow.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_openglwindow.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_string.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_string.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_string.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/abcg.dir/abcg_trackball.cpp.o -c /home/wesley/Documents/3d-world/abcg/abcg_trackball.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/abcg_trackball.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui_demo.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui_demo.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui_demo.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui_draw.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui_draw.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui_draw.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui_widgets.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui_widgets.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui_widgets.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui_impl_sdl.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui_impl_sdl.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/imgui",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/opt/local/include -I/home/wesley/Documents/3d-world/abcg/external/imgui  -g -flto -fno-fat-lto-objects   -o CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.o -c /home/wesley/Documents/3d-world/abcg/external/imgui/imgui_impl_opengl3.cpp",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/imgui/imgui_impl_opengl3.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/abcg/external/fmt",
+  "command": "/usr/lib/ccache/c++   -I/home/wesley/Documents/3d-world/abcg/external/fmt  -g -flto -fno-fat-lto-objects   -std=gnu++2a -o CMakeFiles/fmt.dir/format.cc.o -c /home/wesley/Documents/3d-world/abcg/external/fmt/format.cc",
+  "file": "/home/wesley/Documents/3d-world/abcg/external/fmt/format.cc"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/Main.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/Main.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/Main.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/OpenGLWindow.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/OpenGLWindow.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/OpenGLWindow.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/model/Model.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/model/Model.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/model/Model.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/camera/Camera.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/camera/Camera.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/camera/Camera.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/eventHandler/EventHandler.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/eventHandler/EventHandler.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/eventHandler/EventHandler.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/map/SeaMap.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/map/SeaMap.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/map/SeaMap.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/block/Block.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/block/Block.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/block/Block.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/block/grassBlock/GrassBlock.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/block/grassBlock/GrassBlock.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/block/grassBlock/GrassBlock.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/block/stoneBlock/StoneBlock.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/block/stoneBlock/StoneBlock.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/block/stoneBlock/StoneBlock.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/block/woodBlock/WoodBlock.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/block/woodBlock/WoodBlock.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/block/woodBlock/WoodBlock.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/block/glassBlock/GlassBlock.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/block/glassBlock/GlassBlock.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/block/glassBlock/GlassBlock.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/sea/Sea.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/sea/Sea.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/sea/Sea.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/render/TextureRender.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/render/TextureRender.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/render/TextureRender.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/render/FluidRender.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/render/FluidRender.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/render/FluidRender.cpp"
+},
+{
+  "directory": "/home/wesley/Documents/3d-world/build/examples/cube-craft",
+  "command": "/usr/lib/ccache/c++   -I/usr/include/SDL2 -I/home/wesley/Documents/3d-world/abcg -I/home/wesley/Documents/3d-world/abcg/external/cppitertools -I/home/wesley/Documents/3d-world/abcg/external/fmt -I/home/wesley/Documents/3d-world/abcg/external/glm/.. -I/home/wesley/Documents/3d-world/abcg/external/gsl -I/home/wesley/Documents/3d-world/abcg/external/imgui -isystem /home/wesley/Documents/3d-world/abcg/external  -g -flto -fno-fat-lto-objects   -Wall -Wextra -pedantic -std=gnu++2a -o CMakeFiles/cube-craft.dir/ui/UI.cpp.o -c /home/wesley/Documents/3d-world/examples/cube-craft/ui/UI.cpp",
+  "file": "/home/wesley/Documents/3d-world/examples/cube-craft/ui/UI.cpp"
+}
+]
