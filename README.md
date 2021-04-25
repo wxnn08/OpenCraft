@@ -10,7 +10,7 @@
 
 
 <p align="center">
-    <img align="center" src="https://media.giphy.com/media/yfK8NTde9hdKsgqSL1/giphy.gif" width="90%">
+    <img align="center" src="https://media.giphy.com/media/LOn8Cxgz6UaIy30wu4/giphy.gif" width="90%">
 </p>
 
 <h3 align="center"><a href="https://wxnn08.github.io/OpenCraft/live-demo/"><b>LIVE DEMO</b></a></h3>
