@@ -24,7 +24,7 @@ uniform sampler2D noiseTex2;
 out vec4 outColor;
 
 // Blinn-Phong reflection model
-vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
+vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 uv) {
 	N = normalize(N);
 	L = normalize(L);
 
@@ -40,7 +40,7 @@ vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
 		specular = pow(angle, shininess);
 	}
 
-	vec4 map_Kd = texture(diffuseTex, texCoord);
+	vec4 map_Kd = texture(diffuseTex, uv);
 	vec4 map_Ka = map_Kd;
 
 	vec4 diffuseColor = map_Kd * Kd * Id * lambertian;
@@ -52,19 +52,11 @@ vec4 BlinnPhong(vec3 N, vec3 L, vec3 V, vec2 texCoord) {
 
 float cartoonizeValue(float x) {
 	float c;
-	if(x < 0.1) {
+	if(x < 0.5) {
 		c = 0.0;
-	} else if(x < 0.2){
-		c = 0.1;
-	} else if(x < 0.3){
-		c = 0.2;
-	} else if(x < 0.4){
-		c = 0.3;
-	} else if(x < 0.5){
-		c = 0.4;
 	} else if(x < 0.6){
 		c = 0.5;
-	} else if(x < 0.8){
+	} else if(x < 0.7){
 		c = 0.6;
 	} else if(x < 0.8){
 		c = 0.7;
@@ -85,11 +77,11 @@ vec4 cartoonizeVec4(vec4 v) {
 
 void main() {
 	vec4 color;
-	vec2 texCoord = fragTexCoord;
-	color = BlinnPhong(fragN, fragL, fragV, texCoord);
+	vec2 uv = fragTexCoord*5.0f;
+	color = BlinnPhong(fragN, fragL, fragV, uv);
 
-	vec4 noiseColor1 = texture(noiseTex1, texCoord + time/2.0);
-	vec4 noiseColor2 = texture(noiseTex1, texCoord - time/5.0);
+	vec4 noiseColor1 = texture(noiseTex1, uv + time/200.0);
+	vec4 noiseColor2 = texture(noiseTex1, uv - time/400.0);
 
 	vec4 noiseColor = (noiseColor1 + noiseColor2) * 0.5;
 

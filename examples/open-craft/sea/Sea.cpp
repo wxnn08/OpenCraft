@@ -6,8 +6,8 @@ void Sea::loadModel(const std::string &assetsPath) {
 	m_model = new Model();
 
 	m_model->loadDiffuseTexture(assetsPath + "maps/sea_texture.png");
-	m_model->loadNoiseTexture1(assetsPath + "maps/noise4.png");
-	m_model->loadNoiseTexture2(assetsPath + "maps/noise4.png");
+	m_model->loadNoiseTexture1(assetsPath + "maps/noise1.png");
+	m_model->loadNoiseTexture2(assetsPath + "maps/noise2.png");
 	m_model->loadFromFile(assetsPath + "plane.obj");
 	m_model->setupVAO(FluidRender::m_program);
 
@@ -20,7 +20,7 @@ void Sea::loadModel(const std::string &assetsPath) {
 
 void Sea::render(float dt = 0.0f) {
 	m_time += dt;
-	FluidRender::useProgram(m_modelMatrix, m_time/100.0f, m_shininess, m_Ka, m_Kd, m_Ks);
+	FluidRender::useProgram(m_modelMatrix, m_time, m_shininess, m_Ka, m_Kd, m_Ks);
 	m_model->render();
 }
 

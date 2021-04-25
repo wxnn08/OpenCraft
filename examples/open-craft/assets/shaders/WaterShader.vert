@@ -24,10 +24,10 @@ out vec3 fragNObj;
 
 void main() {
 
-	vec2 uv = inTexCoord;
+	vec2 uv = inTexCoord * 5.0f;
 	vec3 newPos = inPosition;
-	float hight1 = texture(noiseTex1, uv + time).x * 0.2;
-    newPos.y += hight1;
+
+	newPos.y = ((sin(time + uv.x*5000.0) + cos(time + uv.y*3000.0)) / 6.0);
 
 	vec3 P = (viewMatrix * modelMatrix * vec4(newPos, 1.0)).xyz;
 	vec3 N = normalMatrix * inNormal;
