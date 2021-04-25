@@ -95,14 +95,16 @@ Inside OpenCraft directory:
 
 ### Camera
 
-| KEY  | FUNCTION                                                |
-| :--- | ------------------------------------------------------- |
-| Q    | Moves the camera to the left                            |
-| E    | Moves the camera to the right                           |
-| W    | Moves the camera forward                                |
-| A    | Rotates the camera counterclockwise on the local Y axis |
-| S    | Moves the camera backward                               |
-| D    | Rotates the camera clockwise on the local Y axis        |
+| KEY        | FUNCTION                                                |
+| :--------- | ------------------------------------------------------- |
+| Q          | Moves the camera to the left                            |
+| E          | Moves the camera to the right                           |
+| W          | Moves the camera forward                                |
+| A          | Rotates the camera counterclockwise on the local Y axis |
+| S          | Moves the camera backward                               |
+| D          | Rotates the camera clockwise on the local Y axis        |
+| LEFT CTRL  | Moves the camera down                                   |
+| SPACE      | Moves the camera up                                     |
 
 ### Crafting
 
