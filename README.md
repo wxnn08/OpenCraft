@@ -85,7 +85,7 @@ cd OpenCraft
 
 #### Running the game
 
-Inside OpenCraft directory:
+In OpenCraft directory:
 
  ```bash 
 ./build/bin/open-craft/open-craft
